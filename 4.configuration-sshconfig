@@ -1,0 +1,14 @@
+sudo nano /etc/ssh/sshd_config
+
+PermitRootLogin prohibit-password
+PasswordAuthentication no
+PubkeyAuthentication yes
+
+sudo systemctl restart sshd
+
+##
+PermitRootLogin no
+PasswordAuthentication no
+PubkeyAuthentication yes
+
+sudo systemctl restart sshd

@@ -1,0 +1,8 @@
+# Generate SSH key baru (gunakan algoritma modern, contoh ed25519)
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+ssh-keygen -t ed25519 -C "email@example.com" -f ~/.ssh/github_work
+
+# Default akan tersimpan di ~/.ssh/id_ed25519 dan ~/.ssh/id_ed25519.pub
+# Tekan enter terus jika tidak ingin menambahkan passphrase
+

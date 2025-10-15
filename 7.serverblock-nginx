@@ -1,0 +1,52 @@
+# Buat folder untuk domain
+sudo mkdir -p /var/www/snowfall.com
+
+# Beri hak akses agar user biasa bisa mengelola
+sudo chown -R $USER:$USER /var/www/snowfall.com
+
+# Buat index.html sederhana
+echo "<h1>Hello, Snowfall!</h1>" | sudo tee /var/www/snowfall.com/index.html
+
+# Buat file konfigurasi baru
+sudo nano /etc/nginx/sites-available/snowfall.com
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name snowfall.com www.snowfall.com;
+
+    root /var/www/snowfall.com;
+    index index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Optional: Logging
+    access_log /var/log/nginx/snowfall.com.access.log;
+    error_log /var/log/nginx/snowfall.com.error.log;
+}
+
+# Aktifkan konfigurasi dengan membuat symlink
+sudo ln -s /etc/nginx/sites-available/snowfall.com /etc/nginx/sites-enabled/
+
+# Hapus default config jika tidak diperlukan
+sudo rm /etc/nginx/sites-enabled/default
+
+# Uji konfigurasi nginx
+sudo nginx -t
+
+# Restart nginx agar konfigurasi baru jalan
+sudo systemctl restart nginx
+
+# konfigurasi reverse proxy
+server {
+    server_name cloud.nightcoding.my.id;
+    listen 80;
+
+    location / {
+        proxy_pass http://127.0.0.1:6969;
+    }
+}
+

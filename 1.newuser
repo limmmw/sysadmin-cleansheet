@@ -1,0 +1,8 @@
+# Buat user baru
+sudo adduser namauser
+
+sudo usermod -aG sudo namauser
+
+sudo visudo
+
+namauser ALL=(ALL) NOPASSWD:ALL
