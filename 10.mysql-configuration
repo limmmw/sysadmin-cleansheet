@@ -1,0 +1,17 @@
+# agar bisa konek selain localhost
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+bind-address            = 127.0.0.1
+to
+bind-address            = 0.0.0.0
+sudo systemctl restart mysql
+
+#membuat user baru
+CREATE DATABASE snowfall_docker CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE USER 'snowfall_user'@'%' IDENTIFIED BY 'snowfall_pass';
+
+GRANT ALL PRIVILEGES ON snowfall_docker.* TO 'snowfall_user'@'%';
+
+FLUSH PRIVILEGES;
+EXIT;
+
