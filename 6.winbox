@@ -20,3 +20,5 @@ add chain=forward dst-address=192.168.2.1 action=drop comment="Block IP 192.168.
 /ip firewall filter//memblokir seluruh client lan ke youtube
 add chain=forward out-interface=ether1 dst-address=142.250.0.0/16 action=drop comment="Block YouTube for all LAN"
 
+#add route
+sudo ip route add 10.10.10.0/24 via 10.226.127.187 dev wlp3s0
