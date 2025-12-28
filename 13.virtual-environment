@@ -1,0 +1,9 @@
+#membuat virtual environment untuk modifikasi/instalasi python3
+
+python3 -m venv venv
+
+#aktifkan
+source venv/bin/activate
+
+#nonaktif
+deactivate
