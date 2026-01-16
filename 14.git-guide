@@ -1,0 +1,92 @@
+#konfigurasi awal
+git config --global user.name "Nama Kamu"
+git config --global user.email "email@domain.com"
+git config --list
+
+#📁 Inisialisasi & Clone
+git init                      # inisialisasi repo baru
+git clone <url>               # clone repo dari remote
+
+📄 Status & Riwayat
+git status                    # cek status file
+git log                       # riwayat commit
+git log --oneline --graph     # log ringkas & bercabang
+
+➕ Add & Commit
+git add file.txt              # tambah 1 file
+git add .                     # tambah semua perubahan
+git commit -m "pesan commit"  # commit
+
+🌿 Branch
+git branch                    # lihat branch local
+git branch -a                 # lihat local + remote
+
+Buat Branch
+git branch nama-branch        # buat branch (tanpa pindah)
+git switch -c nama-branch     # buat & pindah (recommended)
+git checkout -b nama-branch   # cara lama
+
+Hapus Branch
+git branch -d nama-branch     # hapus branch (aman)
+git branch -D nama-branch     # hapus branch (paksa)
+
+🔀 Merge
+git merge nama-branch
+
+git switch main
+git merge feature-login
+
+🌍 Remote
+git remote -v                 # lihat remote
+git remote add origin <url>   # tambah remote
+
+⬆️ Push
+git push                      # push branch aktif
+git push origin main          # push branch tertentu
+git push -u origin nama-branch # push + set upstream
+git push origin --delete cloud # hapus branch remote
+
+⬇️ Pull & Fetch
+git pull                      # fetch + merge
+git pull origin main
+git fetch                     # ambil update tanpa merge
+
+🧠 Alur Kerja Umum
+git switch -c feature-x
+git add .
+git commit -m "Add feature x"
+git push -u origin feature-x
+
+🪜 ALUR KERJA (STEP BY STEP)
+1️⃣ Pastikan pekerjaanmu sudah aman
+
+Cek status:
+
+git status
+
+
+Jika masih ada perubahan belum di-commit:
+
+git add .
+git commit -m "WIP: progress feature-x"
+
+
+👉 Wajib commit dulu supaya tidak konflik
+
+2️⃣ Pindah ke branch main
+git switch main
+
+3️⃣ Pull update terbaru dari remote main
+git pull origin main
+
+
+Sekarang main kamu sudah sama dengan main di remote.
+
+4️⃣ Kembali ke branch kamu
+git switch feature-x
+
+5️⃣ Merge main ke branch kamu
+git merge main
+
+
+📌 Tujuan: branch kamu menyerap perubahan terbaru dari main
